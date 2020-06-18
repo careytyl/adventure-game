@@ -1,3 +1,5 @@
+from items import item_list as i
+
 class Monster:
 	"""Class to define monster and player object attributes"""
 	
@@ -19,8 +21,21 @@ class Monster:
 		self.current_exp = 0
 		self.current_gold = 0
 		self.inventory_list = []
+		self.equipped = {
+			"head":None,
+			"chest":None,
+			"hands":None,
+			"legs":None,
+			"feet":None,
+			"finger_1":None,
+			"finger_2":None,
+			"neck":None,
+			"hand_l":None,
+			"hand_r":None
+			}
 		self.x_pos = 0
 		self.y_pos = 0
+		self.z_pos = 0
 		
 
 # Dictionary for valid monster targets
@@ -29,7 +44,7 @@ class Monster:
 # max_dmg, attack_speed, exp_value, gold_value
 # item, drop_chance
 monster_list = {
-	"slime":Monster("Slime", 20, 20, 0, 5, 3, 10, 2, "health potion", 50),
-	"zombie":Monster("Weak Zombie", 80, 80, 3, 10, 2, 25, 7),
+	"slime":Monster("Slime", 20, 20, 0, 5, 3, 10, 2, i["health potion"], 100),
+	"weak zombie":Monster("Weak Zombie", 80, 80, 3, 10, 2, 25, 7),
 	"alex":Monster("Powerful Alex", 2000, 2000, 1000, 1000, 2, 0, 0)
 }
