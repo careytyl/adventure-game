@@ -1,19 +1,55 @@
-class Item:
-	"""Class to define item attributes/uses"""
+class Potion:
+    """Class to define health potions"""
 
-	def __init__(self, name, atk_bonus=0, hp_bonus=0, as_bonus=0, gold_value=0,
-		exp_value=0, heal_value=0, use=False, equip=False):
-			self.name = name
-			self.atk_bonus = atk_bonus
-			self.hp_bonus = hp_bonus
-			self.as_bonus = as_bonus
-			self.gold_value = gold_value
-			self.exp_value = exp_value
-			self.heal_value = heal_value
-			self.use = use
-			self.equip = equip
+    def __init__(self,
+                 name,
+                 value,
+                 alt_names=("potion", "pot"),
+                 function="heal",
+                 use=True):
 
-			
+        self.name = name.title()
+        self.value = value
+        self.alt_names = alt_names
+        self.function = function
+        self.use = use
+
+
+class Equipment:
+    """Class to define items to be equipped"""
+
+    def __init__(self,
+                 name,
+                 alt_names,
+                 slot,
+                 stat,
+                 value,
+                 ):
+
+        self.name = name.title()
+        self.alt_names = alt_names
+        self.slot = slot
+        self.stat = stat
+        self.value = value
+        self.use = False
+
+
+# Dictionary for item instances
+
 item_list = {
-	"health potion":Item("Health Potion", use=True, heal_value=40)
-	}
+    # Potions
+    "weak health potion": Potion("Weak Health Potion",
+                                 alt_names=("weak", "pot", "potion"),
+                                 function="heal",
+                                 value=25),
+    "health potion": Potion("Health Potion",
+                            function="heal",
+                            value=40),
+
+    # Gear
+    "leather jacket": Equipment("Leather Jacket",
+                                alt_names=("jacket", "leather"),
+                                slot="chest",
+                                stat="max_hp",
+                                value=40)
+}
